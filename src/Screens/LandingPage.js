@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import pic1 from "../images/photo1.jpg";
 
+
 const LandingPage = () => {
   const [elapsedTime, setElapsedTime] = useState("");
   const navigate = useNavigate();
@@ -26,8 +27,7 @@ const LandingPage = () => {
     };
 
     const interval = setInterval(updateElapsedTime, 1000);
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   const go_home = () => {
@@ -37,9 +37,10 @@ const LandingPage = () => {
   return (
     <div style={styles.container}>
       <div style={styles.content} onClick={go_home}>
-        <img src={pic1} alt="Event Picture" style={styles.image}/>
-        <p style={styles.text}>Since June 19, 2024</p>
+        <img src={pic1} alt="Event" style={styles.image} />
+        <p style={styles.text}>🌻 Since June 19, 2024</p>
         <p style={styles.timer}>{elapsedTime}</p>
+        <p style={styles.hint}>Tap to continue into our sunflower garden 🌼</p>
       </div>
     </div>
   );
@@ -51,31 +52,43 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    background: 'linear-gradient(135deg, #74ebd5, #ACB6E5)',
-    color: '#fff',
-    fontFamily: 'Arial, sans-serif',
+    background: 'linear-gradient(135deg, #fff9e5, #ffe4a1)', // soft yellow theme
+    color: '#5a4e2e',
+    fontFamily: "'Patrick Hand', cursive",
   },
   content: {
     textAlign: 'center',
-    padding: '20px',
-    borderRadius: '15px',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)',
+    padding: '30px',
+    borderRadius: '25px',
+    backgroundColor: '#fffce2',
+    boxShadow: '0 12px 25px rgba(212, 160, 24, 0.4)',
+    cursor: 'pointer',
+    transition: 'transform 0.3s ease',
   },
   image: {
-    width: '300px',
-    height: 'auto',
-    borderRadius: '10px',
+    width: '320px',
+    height: '320px',
+    objectFit: 'cover',
+    borderRadius: '20px',
     marginBottom: '20px',
-    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
   },
   text: {
-    fontSize: '18px',
+    fontSize: '20px',
+    color: '#a67400',
     marginBottom: '10px',
   },
   timer: {
-    fontSize: '24px',
+    fontSize: '28px',
     fontWeight: 'bold',
+    color: '#d4a018',
+    marginBottom: '10px',
+  },
+  hint: {
+    fontSize: '16px',
+    color: '#7a6520',
+    marginTop: '10px',
+    fontStyle: 'italic',
   },
 };
 

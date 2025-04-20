@@ -3,7 +3,7 @@ import pic1 from "../images/photo2.jpg";
 import pic2 from "../images/photo3.jpg";
 import pic3 from "../images/photo4.jpg";
 import "./Home.css";
-import music from "../music/10cm  Spring Snow (봄눈) [Lovely Runner OST Part 8] [RomEng Lyric].mp3"
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [elapsedTime, setElapsedTime] = useState("");
@@ -28,35 +28,33 @@ const Home = () => {
     };
 
     const interval = setInterval(updateElapsedTime, 1000);
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div style={styles.container}>
-      <audio autoPlay loop>
-        <source src={music} type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
+      <h1 style={styles.header}>🌻 Welcome to Our Sunflower Days</h1>
       <div style={styles.row}>
+        <Link to="/memories" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div style={styles.content}>
+            <img src={pic1} alt="Memories" className="image-fadeIn" style={styles.image} />
+            <p style={styles.text}>🌻 MEMORIES</p>
+          </div>
+        </Link>
         <div style={styles.content}>
-          <img src={pic1} alt="Event Picture" className="image-fadeIn" />
-          <p style={styles.text}>MEMORIES</p>
+          <img src={pic3} alt="Struggles" className="image-zoomIn" style={styles.image} />
+          <p style={styles.text}>🌻 STRUGGLES</p>
         </div>
         <div style={styles.content}>
-          <img src={pic2} alt="Event Picture" className="image-zoomIn" />
-          <p style={styles.text}>STRUGGLES</p>
+          <img src={pic3} alt="History" className="image-slideIn" style={styles.image} />
+          <p style={styles.text}>🌻 HISTORY</p>
         </div>
         <div style={styles.content}>
-          <img src={pic3} alt="Event Picture" className="image-slideIn" />
-          <p style={styles.text}>HISTORY</p>
-        </div>
-        <div style={styles.content}>
-          <img src={pic1} alt="Event Picture" className="image-fadeIn" />
-          <p style={styles.text}>FAVORITES</p>
+          <img src={pic1} alt="Favorites" className="image-fadeIn" style={styles.image} />
+          <p style={styles.text}>🌻 FAVORITES</p>
         </div>
       </div>
-      <p style={styles.timer}>Time Together: {elapsedTime}</p>
+      <p style={styles.timer}>⏰ Time Together: {elapsedTime}</p>
     </div>
   );
 };
@@ -67,31 +65,49 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    padding: '30px',
     height: '100vh',
-    background: 'linear-gradient(135deg, #74ebd5, #ACB6E5)',
-    color: '#fff',
-    fontFamily: 'Arial, sans-serif',
+    background: 'linear-gradient(135deg, #fff9e5, #ffe4a1)',
+    color: '#5a4e2e',
+    fontFamily: "'Patrick Hand', cursive",
+    textAlign: 'center',
+  },
+  header: {
+    fontSize: '2.5rem',
+    marginBottom: '30px',
+    color: '#d4a018',
+    textShadow: '1px 1px #fff8dc',
   },
   row: {
     display: 'flex',
     justifyContent: 'center',
     gap: '20px',
+    flexWrap: 'wrap',
   },
   content: {
-    textAlign: 'center',
-    padding: '20px',
-    borderRadius: '15px',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.3)',
+    padding: '15px',
+    borderRadius: '20px',
+    backgroundColor: '#fffce2',
+    boxShadow: '0 6px 12px rgba(212, 160, 24, 0.2)',
+    transition: 'transform 0.2s',
+    cursor: 'pointer',
+    maxWidth: '160px',
   },
-  text: {
-    fontSize: '18px',
+  image: {
+    width: '100%',
+    borderRadius: '15px',
     marginBottom: '10px',
   },
-  timer: {
-    fontSize: '24px',
+  text: {
+    fontSize: '1.1rem',
+    color: '#a67400',
     fontWeight: 'bold',
-    marginTop: '20px',
+  },
+  timer: {
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    marginTop: '30px',
+    color: '#7a6520',
   },
 };
 
