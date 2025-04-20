@@ -51,6 +51,10 @@ const Home = () => {
           <img src={pic3} alt="Event Picture" className="image-slideIn" />
           <p style={styles.text}>HISTORY</p>
         </div>
+        <div style={styles.content}>
+          <img src={pic1} alt="Event Picture" className="image-fadeIn" />
+          <p style={styles.text}>FAVORITES</p>
+        </div>
       </div>
       <p style={styles.timer}>Time Together: {elapsedTime}</p>
     </div>
