@@ -5,7 +5,7 @@ const MonthPage = () => {
   const { monthId } = useParams();
   const [erroredImages, setErroredImages] = useState([]);
 
-  const images = Array.from({ length: 10 }, (_, i) => `/images/month${monthId}/pic${i + 1}.jpg`);
+  const images = Array.from({ length: 10 }, (_, i) => `/images/month${monthId}/pic${i + 1}.jpg` || `/images/month${monthId}/pic${i + 1}.png`);
   const fallbackImage = "/images/fallback.jpg";
 
   const handleImageError = (index) => {

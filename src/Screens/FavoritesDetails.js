@@ -2,29 +2,41 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const descriptions = {
-  1: "The day you said yes — the happiest day of my life. ",
+  1: "The day you said yes — the happiest day of my life.",
   2: "Our First Photobooth.",
   3: "My favorite surprise for you.",
   4: "The sleep I've always wanted.",
-  5: "The best Christmas Party of my life. ",
-  6: "The first time I felt the essence of Valentine's Day. ",
-  7: "The day I realized that I can't really afford to lose you. ",
+  5: "The best Christmas Party of my life.",
+  6: "The first time I felt the essence of Valentine's Day.",
+  7: "The day I realized that I can't really afford to lose you.",
   8: "The most perfect Photobooth date.",
 };
 
 const FavoritesDetails = () => {
   const { id } = useParams();
-  const imageSrc = `/images/favorites/fav${id}.jpg`;
   const description = descriptions[id] || "This is one of our most cherished memories — a snapshot of joy, laughter, and love. 💛";
+
+  // Start with .jpg as default
+  const imageBasePath = `/images/favorites/fav${id}`;
+  const fallbackImage = "/images/fallback.jpg";
 
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>🌻 Favorite Moment #{id}</h1>
       <img
-        src={imageSrc}
+        src={`${imageBasePath}.jpg`}
         alt={`Favorite ${id}`}
         style={styles.image}
-        onError={(e) => (e.target.src = '/images/fallback.jpg')}
+        onError={(e) => {
+          // If .jpg fails, try .png
+          if (!e.target.dataset.triedPng) {
+            e.target.src = `${imageBasePath}.png`;
+            e.target.dataset.triedPng = true;
+          } else {
+            // If both fail, show fallback
+            e.target.src = fallbackImage;
+          }
+        }}
       />
       <p style={styles.description}>{description}</p>
     </div>
