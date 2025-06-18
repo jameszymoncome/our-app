@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import pic1 from "../images/photo2.jpg";
-import pic2 from "../images/photo3.jpg";
-import pic3 from "../images/photo4.jpg";
+import pic1 from "../images/pic7.jpg";
+import pic3 from "../images/uss.jpg";
+import picko from "../images/akooo.jpg";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const Home = () => {
   const [elapsedTime, setElapsedTime] = useState("");
 
   useEffect(() => {
-    const startDate = new Date("2024-06-19T21:00:00");
+    const startDate = new Date("2024-06-19T21:00:00"); // Adjust the date and time as needed
 
     const updateElapsedTime = () => {
       const now = new Date();
@@ -41,18 +41,18 @@ const Home = () => {
             <p style={styles.text}>🌻 MEMORIES</p>
           </div>
         </Link>
-        <div style={styles.content}>
-          <img src={pic3} alt="Struggles" className="image-zoomIn" style={styles.image} />
-          <p style={styles.text}>🌻 STRUGGLES</p>
-        </div>
-        <div style={styles.content}>
-          <img src={pic3} alt="History" className="image-slideIn" style={styles.image} />
-          <p style={styles.text}>🌻 HISTORY</p>
-        </div>
-        <div style={styles.content}>
-          <img src={pic1} alt="Favorites" className="image-fadeIn" style={styles.image} />
-          <p style={styles.text}>🌻 FAVORITES</p>
-        </div>
+        <Link to="/favorites" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div style={styles.content}>
+            <img src={pic3} alt="Favorites" className="image-fadeIn" style={styles.image} />
+            <p style={styles.text}>🌻 FAVORITES</p>
+          </div>
+        </Link>
+        <Link to="/message" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <div style={styles.content}>
+            <img src={picko} alt="Message" className="image-fadeIn" style={styles.image} />
+            <p style={styles.text}>🌻 MESSAGE</p>
+          </div>
+        </Link>
       </div>
       <p style={styles.timer}>⏰ Time Together: {elapsedTime}</p>
     </div>

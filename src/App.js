@@ -5,6 +5,9 @@ import Home from './Screens/Home';
 import MemoriesPage from './Screens/MemoriesPage';
 import MonthPage from './Screens/MonthPage';
 import music from "./music/10cm  Spring Snow (봄눈) [Lovely Runner OST Part 8] [RomEng Lyric].mp3";
+import Favorites from './Screens/Favorites';
+import FavoritesDetails from './Screens/FavoritesDetails';
+import Message from './Screens/Message';
 
 const App = () => {
   const audioRef = useRef(null);
@@ -39,6 +42,9 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/memories" element={<MemoriesPage />} />
           <Route path="/month/:monthId" element={<MonthPage />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites/:id" element={<FavoritesDetails />} />
+          <Route path="/message" element={<Message />} />
         </Routes>
       </Router>
     </>
